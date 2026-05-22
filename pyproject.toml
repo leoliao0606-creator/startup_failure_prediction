@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "startup-failure-prediction"
+version = "0.1.0"
+description = "MVP for startup failure risk prediction."
+requires-python = ">=3.10"
+readme = "README.md"
+dependencies = [
+  "joblib",
+  "pandas",
+  "scikit-learn",
+  "sentence-transformers",
+]
+
+[project.scripts]
+startup-risk-api = "startup_failure_prediction.api:main"
+startup-risk-predict = "startup_failure_prediction.predict:main"
+startup-risk-train = "startup_failure_prediction.train:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
