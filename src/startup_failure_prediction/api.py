@@ -7,9 +7,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 from urllib.parse import urlparse
 
+from .config import MODEL_PATH
 from .model import StartupRiskModel
 from .predict import DEFAULT_EXAMPLE, predict_payload
-from .train import DEFAULT_MODEL_PATH
 
 
 def make_handler(model: StartupRiskModel) -> type[BaseHTTPRequestHandler]:
@@ -219,13 +219,14 @@ def index_html() -> str:
     <section>
       <form id="predict-form" class="grid">
         <label>Company name<input name="company_name" value="Example Startup"></label>
+        <label>Snapshot date (observation point)<input name="snapshot_date" type="date" value="2026-05-21"></label>
         <label>Industry<input name="industry" value="Ecommerce"></label>
         <label>Product type<input name="product_type" value="Marketplace"></label>
         <label>Country<input name="country" value="USA"></label>
-        <label>Funding total USD<input name="funding_total_usd" type="number" value="18000000"></label>
-        <label>Funding rounds<input name="funding_rounds" type="number" value="3"></label>
-        <label>Founded year<input name="founded_year" type="number" value="2022"></label>
-        <label>Operating years<input name="operating_years" type="number" value="3"></label>
+        <label>Age years at snapshot<input name="age_years_at_snapshot" type="number" step="0.1" value="2.5"></label>
+        <label>Funding total USD at snapshot<input name="funding_total_usd_at_snapshot" type="number" value="18000000"></label>
+        <label>Funding rounds at snapshot<input name="funding_rounds_at_snapshot" type="number" value="3"></label>
+        <label>Days since last round<input name="days_since_last_round" type="number" value="120"></label>
         <label>Market score<input name="market_score" type="number" value="44"></label>
         <label>Scalability score<input name="scalability_score" type="number" value="58"></label>
         <label class="wide">Company description<textarea name="company_description">A marketplace using subsidies to grow in a crowded category with weak retention.</textarea></label>
@@ -254,8 +255,8 @@ def index_html() -> str:
     function formPayload() {{
       const data = new FormData(form);
       const payload = Object.fromEntries(data.entries());
-      for (const key of ["funding_total_usd", "funding_rounds", "founded_year", "operating_years", "market_score", "scalability_score"]) {{
-        payload[key] = Number(payload[key]);
+      for (const key of ["age_years_at_snapshot", "funding_total_usd_at_snapshot", "funding_rounds_at_snapshot", "days_since_last_round", "market_score", "scalability_score"]) {{
+        if (payload[key] !== undefined && payload[key] !== "") payload[key] = Number(payload[key]);
       }}
       return payload;
     }}
@@ -302,7 +303,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Serve the startup failure prediction API.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
-    parser.add_argument("--model", default=str(DEFAULT_MODEL_PATH))
+    parser.add_argument("--model", default=str(MODEL_PATH))
     args = parser.parse_args()
     run_server(args.host, args.port, args.model)
 

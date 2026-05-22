@@ -1,0 +1,156 @@
+company_id,round_date,round_name,amount_usd
+co_flashcart,2019-08-12,Seed,2208136
+co_flashcart,2020-08-11,Series A,6693817
+co_flashcart,2021-08-11,Series B,12806188
+co_flashcart,2022-08-11,Series C,20291859
+co_tokennest,2020-10-12,Seed,1830947
+co_tokennest,2021-10-12,Series A,5550393
+co_tokennest,2022-10-12,Series B,10618660
+co_medroute,2018-07-15,Seed,2232457
+co_medroute,2021-01-12,Series A,6767543
+co_droneshelf,2017-09-12,Seed,2644701
+co_droneshelf,2019-05-13,Series A,8017234
+co_droneshelf,2021-01-10,Series B,15338065
+co_eduspark,2021-06-14,Seed,1240254
+co_eduspark,2022-12-13,Series A,3759746
+co_metatown,2020-12-12,Seed,3051578
+co_metatown,2021-12-12,Series A,9250655
+co_metatown,2022-12-12,Series B,17697767
+co_greenscoot,2018-11-12,Seed,1156643
+co_greenscoot,2019-11-12,Series A,3506285
+co_greenscoot,2020-11-11,Series B,6708003
+co_greenscoot,2021-11-11,Series C,10629069
+co_adsignal,2019-09-12,Seed,1860381
+co_adsignal,2021-09-11,Series A,5639619
+co_mealkit,2017-10-12,Seed,1424070
+co_mealkit,2019-06-12,Series A,4316972
+co_mealkit,2021-02-09,Series B,8258958
+co_indiebank,2019-07-15,Seed,2976609
+co_indiebank,2021-07-14,Series A,9023391
+co_fitmirror,2018-06-14,Seed,2891607
+co_fitmirror,2019-09-13,Series A,8765713
+co_fitmirror,2020-12-12,Series B,16770008
+co_fitmirror,2022-03-13,Series C,26572673
+co_legalbot,2020-01-12,Seed,1488304
+co_legalbot,2022-01-11,Series A,4511696
+co_quickhire,2020-08-12,Seed,2108431
+co_quickhire,2022-02-10,Series A,6391569
+co_nanofarm,2018-09-12,Seed,1729228
+co_nanofarm,2020-01-11,Series A,5242038
+co_nanofarm,2021-05-11,Series B,10028735
+co_socialpulse,2021-11-12,Seed,1118912
+co_socialpulse,2022-07-13,Series A,3391907
+co_socialpulse,2023-03-13,Series B,6489181
+co_brickbuy,2015-10-12,Seed,2799099
+co_brickbuy,2017-03-06,Series A,8485281
+co_brickbuy,2018-07-30,Series B,16233503
+co_brickbuy,2019-12-23,Series C,25722562
+co_brickbuy,2021-05-17,Series D,36759555
+co_bytebrew,2017-02-12,Seed,1424070
+co_bytebrew,2019-02-12,Series A,4316972
+co_bytebrew,2021-02-11,Series B,8258958
+co_clinicpod,2014-07-15,Seed,2177077
+co_clinicpod,2015-12-08,Series A,6599663
+co_clinicpod,2017-05-02,Series B,12626058
+co_clinicpod,2018-09-25,Series C,20006437
+co_clinicpod,2020-02-18,Series D,28590765
+co_groovenote,2018-04-14,Seed,2356482
+co_groovenote,2020-10-12,Series A,7143518
+co_routemind,2013-09-12,Seed,1220631
+co_routemind,2016-05-12,Series A,3700262
+co_routemind,2019-01-10,Series B,7079107
+co_pixelpath,2020-02-12,Seed,2136105
+co_pixelpath,2021-06-12,Series A,6475458
+co_pixelpath,2022-10-11,Series B,12388437
+co_yieldyard,2016-10-12,Seed,1734964
+co_yieldyard,2018-04-12,Series A,5259428
+co_yieldyard,2019-10-11,Series B,10062005
+co_yieldyard,2021-04-10,Series C,15943604
+co_swiftbrief,2021-03-14,Seed,1116228
+co_swiftbrief,2022-09-12,Series A,3383772
+co_caretrack,2014-11-12,Seed,2523584
+co_caretrack,2016-11-11,Series A,7650077
+co_caretrack,2018-11-11,Series B,14635643
+co_caretrack,2020-11-10,Series C,23190696
+co_finlearn,2020-09-12,Seed,1736355
+co_finlearn,2022-03-13,Series A,5263645
+co_ledgerflow,2018-08-12,Seed,1525789
+co_ledgerflow,2021-04-14,Series A,4625327
+co_ledgerflow,2023-12-16,Series B,8848884
+co_clinicbridge,2017-10-12,Seed,2480507
+co_clinicbridge,2022-03-16,Series A,7519493
+co_shopstack,2016-09-12,Seed,1577240
+co_shopstack,2019-03-08,Series A,4781298
+co_shopstack,2021-08-31,Series B,9147277
+co_shopstack,2024-02-24,Series C,14494185
+co_freightgrid,2017-07-15,Seed,2441262
+co_freightgrid,2020-07-26,Series A,7400524
+co_freightgrid,2023-08-07,Series B,14158214
+co_codeharbor,2019-11-12,Seed,2976609
+co_codeharbor,2023-04-01,Series A,9023391
+co_datacove,2019-02-12,Seed,2034385
+co_datacove,2021-08-15,Series A,6167103
+co_datacove,2024-02-16,Series B,11798512
+co_payatlas,2017-06-14,Seed,1472091
+co_payatlas,2019-09-30,Series A,4462545
+co_payatlas,2022-01-15,Series B,8537458
+co_payatlas,2024-05-02,Series C,13527906
+co_farmops,2020-08-12,Seed,2232457
+co_farmops,2023-08-16,Series A,6767543
+co_learnloop,2019-12-12,Seed,1736355
+co_learnloop,2023-04-16,Series A,5263645
+co_carbonledger,2019-04-14,Seed,1627508
+co_carbonledger,2021-09-24,Series A,4933682
+co_carbonledger,2024-03-06,Series B,9438809
+co_talentmap,2019-09-12,Seed,1984406
+co_talentmap,2023-03-01,Series A,6015594
+co_homecare,2018-10-12,Seed,1322350
+co_homecare,2021-05-25,Series A,4008617
+co_homecare,2024-01-06,Series B,7669033
+co_warehouseiq,2018-01-12,Seed,1932666
+co_warehouseiq,2020-11-24,Series A,5858748
+co_warehouseiq,2023-10-07,Series B,11208586
+co_privacykit,2020-07-14,Seed,2232457
+co_privacykit,2023-08-01,Series A,6767543
+co_teamcanvas,2020-11-12,Seed,1488304
+co_teamcanvas,2023-10-01,Series A,4511696
+co_routesage,2013-11-12,Seed,1244044
+co_routesage,2016-06-01,Series A,3771236
+co_routesage,2018-12-20,Series B,7214890
+co_routesage,2021-07-09,Series C,11432250
+co_routesage,2024-01-27,Series D,16337580
+co_clinicrouter,2014-09-12,Seed,1682389
+co_clinicrouter,2017-09-05,Series A,5100051
+co_clinicrouter,2020-08-29,Series B,9757095
+co_clinicrouter,2023-08-23,Series C,15460464
+co_payanchor,2016-02-12,Seed,1710560
+co_payanchor,2018-03-21,Series A,5185450
+co_payanchor,2020-04-27,Series B,9920474
+co_payanchor,2022-06-04,Series C,15719344
+co_payanchor,2024-07-11,Series D,22464172
+co_orbitlearn,2016-08-12,Seed,1314367
+co_orbitlearn,2019-02-12,Series A,3984415
+co_orbitlearn,2021-08-14,Series B,7622731
+co_orbitlearn,2024-02-14,Series C,12078488
+co_sentrymesh,2016-03-13,Seed,1399549
+co_sentrymesh,2018-04-14,Series A,4242641
+co_sentrymesh,2020-05-15,Series B,8116752
+co_sentrymesh,2022-06-16,Series C,12861281
+co_sentrymesh,2024-07-17,Series D,18379777
+co_devsignal,2018-04-14,Seed,1830947
+co_devsignal,2021-01-24,Series A,5550393
+co_devsignal,2023-11-06,Series B,10618660
+co_smbloan,2014-12-12,Seed,1206415
+co_smbloan,2016-11-22,Series A,3657166
+co_smbloan,2018-11-03,Series B,6996658
+co_smbloan,2020-10-14,Series C,11086453
+co_smbloan,2022-09-25,Series D,15843409
+co_smbloan,2024-09-05,Series E,21209900
+co_seedbed,2019-01-12,Seed,1118912
+co_seedbed,2021-07-25,Series A,3391907
+co_seedbed,2024-02-05,Series B,6489181
+co_civicgrid,2019-10-12,Seed,1424070
+co_civicgrid,2022-01-23,Series A,4316972
+co_civicgrid,2024-05-06,Series B,8258958
+co_routinely,2020-02-12,Seed,1860381
+co_routinely,2023-05-17,Series A,5639619

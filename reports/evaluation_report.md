@@ -1,62 +1,71 @@
-# Startup Failure Prediction MVP Evaluation
+# Startup Failure Prediction Evaluation
 
-This report is generated from the local synthetic seed dataset. Replace `data/cleaned_startups.csv` with a real balanced dataset before using the score for decisions.
+Prediction horizon: **3 years** after snapshot_date.
+
+Snapshots are generated per company (yearly after founding and ~30 days post-funding). Each snapshot only uses information known before snapshot_date.
 
 ## Data
 
-- Training rows: 22
-- Test rows: 8
-- Leakage guard: excluded post-outcome fields: failure_reason
-- Feature count: 424
-- Text encoder: `sentence-transformers/all-MiniLM-L6-v2`
-- Text embedding dimensions: 384
+- Companies: 50
+- Training snapshots: 278 (positives: 66)
+- Test snapshots: 93 (positives: 51)
+- Time split date: snapshots before 2021-12-12 are train, on/after are test
+- Label rule: 1 if failed within 3y of snapshot_date; 0 if confirmed alive at snapshot_date + 3y; censored snapshots are excluded.
+- Leakage guard: excluded post-outcome fields ['failure_reason', 'outcome', 'outcome_date']
+- Feature count: 433
+- Text encoder: `sentence-transformers/all-MiniLM-L6-v2` (384 dims)
 
-## Metrics
+## Metrics (test split)
 
-- Train accuracy: 1.000
-- Test accuracy: 1.000
-- Train ROC-AUC: 1.000
-- Test ROC-AUC: 1.000
-- Test confusion matrix: {'tp': 4, 'tn': 4, 'fp': 0, 'fn': 0}
+- ROC-AUC: 0.996
+- PR-AUC (average precision): 0.997
+- Recall on failures (positives): 0.902
+- Precision on failures: 0.979
+- Brier score (lower is better calibrated): 0.050
+- Accuracy: 0.935
+- Confusion matrix: {'tp': 46, 'tn': 41, 'fp': 1, 'fn': 5}
+- Positive class rate (train / test): 0.237 / 0.548
 
-## Transformer Channel
+## Calibration (test split)
 
-- Model: `sentence-transformers/all-MiniLM-L6-v2`
-- Embedding dimensions: 384
-- Versions: {'scikit_learn': '1.8.0', 'sentence_transformers': '5.5.0', 'torch': '2.12.0+cu130', 'transformers': '5.8.1'}
+Reliability bins compare model probability to observed failure rate. Well-calibrated bins have `fraction_positive ≈ mean_predicted`.
 
-## Top Failure-Risk Weights
+| Probability range | Count | Mean predicted | Fraction positive |
+|---|---|---|---|
+| [0.00, 0.20] | 35 | 0.040 | 0.000 |
+| [0.20, 0.40] | 8 | 0.279 | 0.250 |
+| [0.40, 0.60] | 4 | 0.480 | 1.000 |
+| [0.60, 0.80] | 16 | 0.705 | 0.938 |
+| [0.80, 1.00] | 30 | 0.884 | 1.000 |
 
-- `numeric__funding_total_usd`: 0.2081
-- `categorical__product_type_Consumer App`: 0.1503
-- `numeric__funding_rounds`: 0.1376
-- `categorical__industry_Legaltech`: 0.1229
-- `categorical__product_type_Hardware`: 0.1083
-- `categorical__country_Brazil`: 0.0910
-- `categorical__industry_HR Tech`: 0.0823
-- `categorical__industry_Fintech`: 0.0592
-- `categorical__industry_Foodtech`: 0.0504
-- `categorical__product_type_Subscription`: 0.0504
-- `text_embedding__dim_016`: 0.0378
-- `text_embedding__dim_364`: 0.0355
+## Top Failure-Risk Coefficients
 
-## Top Protective Weights
+- `numeric__funding_rounds_at_snapshot`: 1.1040
+- `categorical__industry_HR Tech`: 0.7774
+- `categorical__industry_Legaltech`: 0.7460
+- `categorical__product_type_Consumer App`: 0.5814
+- `numeric__funding_total_usd_at_snapshot`: 0.5518
+- `categorical__product_type_Virtual Platform`: 0.5482
+- `categorical__industry_Collaboration`: 0.5262
+- `categorical__industry_Edtech`: 0.5147
+- `categorical__industry_Crypto`: 0.4726
+- `categorical__product_type_SaaS`: 0.4677
 
-- `numeric__market_score`: -1.0392
-- `numeric__scalability_score`: -0.9677
-- `numeric__operating_years`: -0.8814
-- `categorical__product_type_SaaS`: -0.3013
-- `categorical__industry_Healthcare`: -0.0959
-- `categorical__country_Australia`: -0.0939
-- `categorical__industry_Collaboration`: -0.0939
-- `categorical__industry_Martech`: -0.0782
-- `categorical__industry_Agtech`: -0.0740
-- `categorical__country_USA`: -0.0653
-- `categorical__product_type_Marketplace`: -0.0437
-- `text_embedding__dim_271`: -0.0407
+## Top Protective Coefficients
 
-## MVP Notes
+- `numeric__market_score`: -2.4123
+- `categorical__industry_Proptech`: -1.2011
+- `categorical__industry_Healthcare`: -1.0553
+- `categorical__product_type_Hardware`: -1.0550
+- `categorical__product_type_Marketplace`: -0.6635
+- `categorical__country_USA`: -0.6279
+- `categorical__country_Japan`: -0.5894
+- `categorical__industry_Gaming`: -0.5894
+- `categorical__industry_Logistics`: -0.5668
+- `text_embedding__dim_073`: -0.4082
 
-- This model uses a SentenceTransformer encoder for text semantics, then concatenates those embeddings with numeric and categorical features before logistic regression.
-- The current dataset is intentionally small and illustrative; it validates the API and training pipeline but is not a production model.
-- The next production step is to replace the seed data with real failed and successful companies, then rerun training and compare against gradient boosting and calibrated classifiers.
+## Notes
+
+- Each company contributes multiple snapshots (1y after founding, after funding rounds, and yearly thereafter).
+- Time-based split: train on early snapshots, test on later ones. This catches temporal drift but with the current tiny dataset the test ROC-AUC is noisy.
+- Replace `data/companies_raw.csv` and `data/funding_events.csv` with real records (loot-drop failures + Crunchbase survivors) before reading metrics seriously.

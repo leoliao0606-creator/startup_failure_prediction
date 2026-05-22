@@ -5,10 +5,10 @@ from typing import Any
 import pandas as pd
 
 NUMERIC_FEATURES = [
-    "funding_total_usd",
-    "funding_rounds",
-    "founded_year",
-    "operating_years",
+    "age_years_at_snapshot",
+    "funding_total_usd_at_snapshot",
+    "funding_rounds_at_snapshot",
+    "days_since_last_round",
     "market_score",
     "scalability_score",
 ]
@@ -28,6 +28,8 @@ MODEL_COLUMNS = NUMERIC_FEATURES + CATEGORICAL_FEATURES + ["early_text"]
 
 EXCLUDED_LEAKAGE_FIELDS = [
     "failure_reason",
+    "outcome",
+    "outcome_date",
 ]
 
 
@@ -56,6 +58,9 @@ def records_to_frame(records: list[dict[str, Any]] | pd.DataFrame) -> pd.DataFra
 def numeric_baselines(frame: pd.DataFrame) -> dict[str, float]:
     baselines: dict[str, float] = {}
     for field in NUMERIC_FEATURES:
+        if field not in frame.columns:
+            baselines[field] = 0.0
+            continue
         values = pd.to_numeric(frame[field], errors="coerce")
         baselines[field] = float(values.mean()) if values.notna().any() else 0.0
     return baselines
